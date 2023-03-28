@@ -1,0 +1,275 @@
+<head>
+    <!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
+rel="stylesheet"
+/>
+
+
+<script>
+  $(document).ready(function(){
+      $('[data-toggle="popover"]').popover({
+          placement : 'top',
+          trigger : 'hover'
+      });
+  });
+  </script>
+
+</head>
+<body >
+
+  <div *ngIf="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Profile updated successfuly</strong> 
+    <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- <div *ngIf="successPhoto" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Profile picture updated successfully</strong> 
+    <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+
+    <!-- <div class="container">
+        <div class="row d-flex justify-content-center" id="card">
+            <div class="col-md-10 mt-5 pt-5">
+                <div class="row z-depth-3">
+                    <div class="col-sm-4 rounded-left" style="background-color: #d5eee2;">
+                        <div class="card-block text-center text-white ">
+                          <img src="{{profPic}}" alt="" style="height:150px ; width: 150px; border-radius: 50%; margin-top: 20px;">
+                            <h2 class="font-weight-bold mt-4">{{fName}} {{lName}}</h2>
+                            <a data-bs-toggle="modal" data-bs-target="#edit-profile" style="color:white;" href="#!"><span class="far fa-edit fa-2x mb-4"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 bg-white rounded-right">
+                        <h3 class="mt-3 text-center">User Details</h3>
+                        <hr class="badge-success mt-0 w-25">
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+                                <b>First Name  </b>
+                                <h6 class="text-muted">{{fName}}</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Last Name </b>
+                                <h6 class="text-muted">{{lName}}</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Email id </b>
+                                <h6 class="text-muted">{{emailId}}</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Mobile Number </b>
+                                <h6 class="text-muted">{{mobileNum}}</h6>
+                            </div>
+                            <div class="col-sm-6">
+                                <b>Gender </b>
+                                <h6 class="text-muted">{{gen}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+   -->
+
+  <div class="container" style="padding-top:5% ; padding-left: 12%;">
+    <div class="row "> 
+      <div class="col-lg-3">
+        <div class="card mb-4">
+          <div class="card-body text-center" style="box-shadow: 0px 0px 20px 2px rgba(0,0,0,.1);">
+            <img id="imgProf" src="{{profPic}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px; height: 150px;" data-bs-toggle="popover" title="Edit profile picture"  >
+
+            <a data-bs-toggle="modal" data-bs-target="#edit-profile-pic" href="#!" ><button style="margin-top: 20px;" class="btn btn-primary">Edit photo</button></a>
+
+            <!-- <h5 class="my-3">{{fName}} {{lName}}</h5> -->
+
+            
+
+          </div>
+        </div>
+        
+    
+      </div>
+      <div class="col-lg-7">
+        <div class="card mb-3" >
+          <div class="card-body" style="box-shadow: 0px 0px 20px 2px rgba(0,0,0,.1);">
+            <div style="margin-bottom: 40px;">
+              <h5 style="display: inline;">Personal Details</h5>&nbsp;&nbsp;&nbsp;
+              <a data-bs-toggle="modal" data-bs-target="#edit-profile" href="#!"><span class="far fa-edit fa-2x mb-2 "></span></a>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <i class="fa fa-user icon" ></i>&nbsp;
+                <p class="mb-0" style="display: inline;">First Name</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-muted mb-0">{{fName}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4">
+                <i class="fa fa-user icon" ></i>&nbsp;
+                <p class="mb-0" style="display: inline;">Last name</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-muted mb-0">{{lName}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4">
+                <i class="fa fa-envelope" ></i>&nbsp;
+                <p class="mb-0" style="display: inline;">Email</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-muted mb-0">{{emailId}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4">
+                <i class="fa fa-mobile"></i>&nbsp;
+                <p class="mb-0" style="display: inline;">Mobile</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-muted mb-0">{{mobileNum}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-4">
+                <i class="fa fa-user" ></i>&nbsp;
+                <p class="mb-0" style="display: inline;">Gender</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-muted mb-0">{{gen}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div> 
+  </div>
+
+
+
+
+  <div class="modal fade" id="edit-profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form [formGroup]="editProfile" (ngSubmit)="EditedProfile()">
+      <div class="modal-content">
+        <div class="modal-header text-white" style="background-color :#5bbf64;">
+          <h5 class="modal-title" id="exampleModalLabel">Edit user details</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center" >
+            <img src="{{profPic}}" style="height:150px ; width: 150px;">
+            
+                <table class="table">
+                    <tbody>
+
+                      <tr>
+                        <th scope="row">First Name: </th>
+                        <td><input type="text" class="form-control" formControlName="firstname" [ngModel]="fName"></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Last Name: </th>
+                        <td><input type="text" class="form-control" formControlName="lastname" [ngModel]="lName">
+                        </td>
+                      </tr>
+
+                      <!-- <tr>
+                        <th scope="row">Email id: </th>
+                        <td><input type="text" class="form-control" formControlName="email" [ngModel]="emailId">
+                        </td>                       
+                      </tr> -->
+
+                      <tr>
+                        <th scope="row">Mobile Number: </th>
+                        <td><input type="number" class="form-control" formControlName="mobile" [ngModel]="mobileNum">
+                        </td>                       
+                      </tr>
+
+                      <!-- <tr>
+                        <th scope="row">Gender</th>
+                        <td>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" value="m" id="male" formControlName="gender" [ngModel]="gen">
+                                <label class="form-check-label" for="male">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" value="f" id="female" formControlName="gender" [ngModel]="gen">
+                                <label class="form-check-label" for="female">Female</label>
+                            </div>
+                        </td>                       
+                      </tr> -->
+
+                    </tbody>
+                  </table>
+            
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit" data-bs-dismiss="modal" (click)="changeDisplay()">Save changes</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+
+
+
+
+  <div class="modal fade" id="edit-profile-pic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form [formGroup]="editProfile" (ngSubmit)="EditedProfile()">
+      <div class="modal-content">
+        <div class="modal-header text-white" style="background-color :#5bbf64;">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Profile Photo</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center" >
+            <img src="{{preview}}" style="height:150px ; width: 150px;">
+            
+            <div style="margin-top: 40px;">
+              Update profile photo:  &nbsp;
+
+              <!--was getting error when it had formcontrolname attribute-->
+            <input type="file" name="image" accept="image/*"  (change)="onSelectPhoto($event) ">
+            </div>  
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submit" data-bs-dismiss="modal" (click)="[changePhoto()]">Update Ptoto</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  
+</body>

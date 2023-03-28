@@ -1,0 +1,61 @@
+<div class="container">
+<form [formGroup]="editAnnouncement" (ngSubmit)="Edit()" class="border p-4 rounded-3 rounded-top wrapper shadow-lg ">
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th scope="row">Announcement id<span style="color:red ;"> *</span> : </th>
+                <td><input type="text" class="form-control" id="id" formControlName="id" [readonly]="true"></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Announcement title <span style="color:red ;"> *</span> : </th>
+                <td><input type="text" class="form-control" id="title" formControlName="title">
+                </td>
+            </tr>
+            <div class="form-text text-danger" *ngIf="Title.errors?.['required'] && (Title.touched || Title.dirty)">
+                Title is Required
+            </div>
+            <div class="form-text text-danger"
+                *ngIf="Title.errors?.['maxlength'] && Title.errors?.['minlength'] && Title.errors?.['minlength'] && (Id.touched || Id.dirty)">
+                Title should be in the range of 2 to 30 characters.
+            </div>
+
+            <tr>
+                <th scope="row">Decsription id<span style="color:red ;"> *</span> : </th>
+                <td><input type="textarea" class="form-control" id="description" formControlName="description">
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">Start Date id<span style="color:red ;"> *</span> : </th>
+                <td><input type="date" [min]="minDate" class="form-control" id="startdate" formControlName="startdate"
+                        name="startdate">
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">End Date id<span style="color:red ;"> *</span> : </th>
+                <td><input type="date" class="form-control" id="enddate" formControlName="enddate" name="enddate"
+                        [min]="minDate">
+                </td>
+            </tr>
+
+            <tr *ngIf="this.editAnnouncement.hasError('wrongdate') && StartDate?.dirty && EndDate?.dirty">
+                <div class="form-text text-danger">
+                    Start date should be before End Date
+                </div>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    
+        <button type="button" class="btn btn-danger" routerLink="../../announcement" >Cancel&nbsp;&nbsp;</button>
+        <button type="submit" class="btn btn-success" id="submit" 
+            [disabled]="editAnnouncement.invalid" >SAVE</button>
+
+</form>
+</div>

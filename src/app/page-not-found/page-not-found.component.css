@@ -1,0 +1,11 @@
+.container{
+  margin-top: 10%;
+  text-align: center;
+  justify-content: center;
+}
+
+.header.navigation .navbar-right .dropdown-menu-right {
+  right: .1rem;
+  margin-top: -.5rem;
+  box-shadow: 0 2px 12px 2px rgb(0 0 0 /  12%);
+}

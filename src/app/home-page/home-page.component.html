@@ -1,0 +1,51 @@
+<div *ngIf="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div *ngFor="let a of announcements; let i = index">
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <button type="button" style="float: right;" class="close" data-bs-dismiss="alert" aria-label="Close" (click)="dismissAnnouncement(i)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <strong>{{a.title}}</strong>&nbsp;&nbsp;{{a.description}}
+  </div>
+</div >
+
+<!-- <input type="file" class="file-upload" onchange="console.log(event.target.files)"> -->
+
+
+<body>
+  <form [formGroup]="fileupload" (ngSubmit)="[uploadFile()]">
+    <div class="container" id="left">
+      <div>
+        <input type="file" style="display: block;" class="form-control" formControlName="files"
+          (change)="onSelectFile($event)" >
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit">Upload</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="container">
+    <table class="table table-hover">
+      <thead class="bg-light">
+        <tr>
+          <th scope="col">Uploaded File Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{fileName}}</td>
+          <td><button class="btn btn-danger" (click)="onDelete()">Delete</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</body>

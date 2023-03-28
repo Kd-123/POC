@@ -1,0 +1,95 @@
+<div class="container">
+
+    <div class="row" style="margin-top: 10px;">
+
+        <div class="col-md-2 mt-4">
+            <h6>Select Country : </h6>
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-4">
+                <select #item (change)="onSelected(item.value)" style="margin-top: 20px;">
+                    <option value="india">India</option>
+                    <option value="nepal">Nepal</option>
+                    <option value="china">China</option>
+                    <option value="turkey">Turkey</option>
+                    <option value="united kingdom">United Kingdom</option>
+                </select>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="col-md-3 mt-4">
+            <h6>Search by university name : </h6>
+        </div>
+        <div class="col-md-3 mt-4">
+            <div class="search">
+                <input class="searchTerm" type="text" name="searchTerm" placeholder="Filter by university name"
+                    [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
+                <!-- <button (click)="search(searchTerm)">Search</button> -->
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <tr *ngIf="loading" style="display: flex; justify-content: center;">
+        <td colspan="5" class="text-center py-5">
+            <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+    </tr>
+
+
+    <div *ngIf="!loading">
+        <table class="table table-striped shadow-lg" style="margin-top:30px ;">
+            <thead style="background-color:#8D7259;">
+                <tr>
+                    <th style="color: #fff;" scope="col">Country code</th>
+                    <th style="color: #fff;" scope="col">Country</th>
+                    <th style="color: #fff;" scope="col">University &nbsp;&nbsp;
+
+                        <select #sort (change)="(onSort(sort.value))">
+                            <option class="text-muted" value="none" selected disabled hidden>Sort</option>
+                            <option value="A">A-Z</option>
+                            <option value="Z">Z-A</option>
+                        </select>
+
+
+
+
+
+                    </th>
+                    <th style="color: #fff;" scope="col">Website</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let uni of countries | paginate: {itemsPerPage:pageSize,currentPage:p};">
+                    <td>{{uni.alpha_two_code}}</td>
+                    <td>{{uni.country}}</td>
+                    <td>{{uni.name}}</td>
+                    <td><a target="_blank" href="{{uni.web_pages}}">{{uni.web_pages}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <footer>
+            <div class="row">
+                <div class="col-md-8">
+                    <pagination-controls (pageChange)=" p =$event " [responsive]="true">
+
+                    </pagination-controls>
+                </div>
+
+                <div class="col-md-4"> Items per Page:&nbsp;
+                    <select (change)="handlePageSizeChange($event)">
+                        <option *ngFor="let size of pageSizes" [ngValue]="pageSize">
+                            {{ size }}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+        </footer>
+    </div>
+</div>

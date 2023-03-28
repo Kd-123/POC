@@ -1,0 +1,15 @@
+
+
+ .navbar a {
+    float: left;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  a{
+    cursor: pointer;
+  }
+

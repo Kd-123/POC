@@ -1,0 +1,221 @@
+<head>
+</head>
+
+<div *ngIf="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{successMessage}}</strong> 
+    <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div *ngIf="dangerAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{errorMessage}}</strong> 
+    <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<body>
+
+    <ngx-confirm-box [bgColor]="bgColor" [confirmHeading]="confirmHeading"
+    [confirmCanceltext]="confirmCanceltext" [confirmContent]="confirmContent"
+    [confirmOkaytext]="confirmOkaytext" (confirmEvt)="confirmChange($event)">
+    </ngx-confirm-box>
+
+
+    <div class="container">
+        <h3 style="margin-top: 10px;">Announcement Bar</h3>
+        <div class="container1">
+            <a data-bs-toggle="modal" data-bs-target="#add" href="#!"><button class="btn btn-primary">ADD</button></a>
+        </div>
+
+
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form [formGroup]="addAnnouncement" (ngSubmit)="Add()">
+                    <div class="modal-content">
+                        <div class="modal-header text-white" style="background-color :#5bbf64;">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Announcement</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+
+                            <table class="table">
+                                <tbody>
+
+                                    <tr>
+                                        <th scope="row">Announcement title <span style="color:red ;"> *</span> : </th>
+                                        <td><input type="text" class="form-control" id="title" formControlName="title">
+                                        </td>
+                                    </tr>
+                                    <div class="form-text text-danger"
+                                        *ngIf="Title.errors?.['required'] && (Title.touched || Title.dirty)">
+                                        Title is Required
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="Title.errors?.['maxlength'] && Title.errors?.['minlength'] && Title.errors?.['minlength'] && (Title.touched || Title.dirty)">
+                                        Title should be in the range of 2 to 30 characters.
+                                    </div>
+
+                                    <tr>
+                                        <th scope="row">Decsription<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="textarea" class="form-control" id="description"
+                                                formControlName="description">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Start Date<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="date" [min]="minDate" class="form-control" id="startdate"
+                                                formControlName="startdate" name="startdate">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">End Date<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="date" class="form-control" id="enddate"
+                                                formControlName="enddate" name="enddate" [min]="minDate">
+                                        </td>
+                                    </tr>
+
+                                    <tr
+                                        *ngIf="this.addAnnouncement.hasError('wrongdate') && StartDate?.dirty && EndDate?.dirty">
+                                        <div class="form-text text-danger">
+                                            Start date should be before End Date
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success" id="submit" data-bs-dismiss="modal"
+                                [disabled]="addAnnouncement.invalid">SAVE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form [formGroup]="EditAnnouncement" (ngSubmit)="Edit()">
+                    <div class="modal-content">
+                        <div class="modal-header text-white" style="background-color :#5bbf64;">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Announcement</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+
+                            <table class="table">
+                                <tbody>
+
+                                    <tr>
+                                        <th scope="row">Announcement title <span style="color:red ;"> *</span> : </th>
+                                        <td><input type="text" class="form-control" id="title" formControlName="title">
+                                        </td>
+                                    </tr>
+                                    <div class="form-text text-danger"
+                                        *ngIf="Title.errors?.['required'] && (Title.touched || Title.dirty)">
+                                        Title is Required
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="Title.errors?.['maxlength'] && Title.errors?.['minlength'] && Title.errors?.['minlength'] && (Title.touched || Title.dirty)">
+                                        Title should be in the range of 2 to 30 characters.
+                                    </div>
+
+                                    <tr>
+                                        <th scope="row">Decsription<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="textarea" class="form-control" id="description"
+                                                formControlName="description">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">Start Date<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="date" [min]="minDate" class="form-control" id="startdate"
+                                                formControlName="startdate" name="startdate">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row">End Date<span style="color:red ;"> *</span> : </th>
+                                        <td><input type="date" class="form-control" id="enddate"
+                                                formControlName="enddate" name="enddate" [min]="minDate">
+                                        </td>
+                                    </tr>
+
+                                    <tr
+                                        *ngIf="this.addAnnouncement.hasError('wrongdate') && StartDate?.dirty && EndDate?.dirty">
+                                        <div class="form-text text-danger">
+                                            Start date should be before End Date
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success" id="submit" data-bs-dismiss="modal"
+                                [disabled]="EditAnnouncement.invalid">SAVE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container2">
+
+            <table class="table table-hover">
+                <thead class="bg-light">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Announcement</th>
+                        <td scope="col">Start Date</td>
+                        <td scope="col">End Date</td>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of announcements; let i = index">
+                        <td>{{a.title}}</td>
+                        <td>{{a.description}}</td>
+                        <td>{{a.startdate}}</td>
+                        <td>{{a.enddate}}</td>
+                        <td>
+
+                            <!-- <a routerLink="../edit-announcement/{{a.id}}"><button class="btn btn-primary"><span
+                                        class="far fa-edit"></span>&nbsp;Edit</button></a>&nbsp;&nbsp; -->
+
+                            <a data-bs-toggle="modal" data-bs-target="#edit" href="#!">
+                                <button class="btn btn-primary" (click) = sendData(a)><span class="far fa-edit"></span>&nbsp;Edit</button>
+                            </a>
+
+                            <button class="btn btn-danger" (click)="deleteAnnouncement(a.id)"><i
+                                    class="fa fa-trash-o red-color" style="font-size: medium;"></i>&nbsp;
+                                Delete</button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>

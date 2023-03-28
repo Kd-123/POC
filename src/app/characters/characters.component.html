@@ -1,0 +1,32 @@
+<!-- <p>works</p> -->
+
+<table class="table table-striped" style="margin-top:50px ;">
+    <thead style="background-color:cornflowerblue;">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Height</th>
+          <th scope="col">Mass</th>
+          <th scope="col">Hair colour</th>
+          <th scope="col">Eye colour</th>
+          <th scope="col">Birth year</th>
+          <th scope="col">Gender</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let people of data | paginate: {itemsPerPage:5,currentPage:p};">
+            <td>{{people.name}}</td>
+            <td>{{people.height}}</td>
+            <td>{{people.mass}}</td>
+            <td>{{people.hair_color}}</td>
+            <td>{{people.eye_color}}</td>
+            <td>{{people.birth_year}}</td>
+            <td>{{people.gender}}</td>
+        </tr>
+    </tbody>
+</table> 
+<footer>
+    <pagination-controls style="position:fixed;" (pageChange)=" p =$event ">
+
+    </pagination-controls>
+</footer>

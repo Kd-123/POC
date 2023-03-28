@@ -1,0 +1,9 @@
+.wrapper{
+    border-top: 03px solid green;
+}
+html, body{min-height:100%;}
+body{height:90vh;}
+
+body{
+    background-color:white;
+}

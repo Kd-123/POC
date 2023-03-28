@@ -1,0 +1,61 @@
+<div *ngIf="dangerAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Either Password or Username is invalid </strong> 
+    <button type="button" class="close" data-bs-dismiss="alert" style="float: right;" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="container">
+    <form [formGroup]="login" (ngSubmit)="LoginSubmitted()" class="border p-3 rounded-3 p-4 col-5" id="formBorder">
+        <div class="row g-0">
+            <div class="col text-center p-2 mg-3" style="background-color: #e9fce6;">
+                <span class="fs-3">Login</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3 mt-4">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-envelope icon"></i></span>
+            <input type="text" class="form-control" id="emailid" formControlName="emailid" placeholder="Enter email id">
+            </div>
+                <!-- ?. - if reuired is null therefore to handle it-->
+                <div class="form-text text-danger" *ngIf="login.get('emailid')?.invalid 
+                && login.get('emailid')?.touched">
+            <div class="form-text text-danger" *ngIf="Email.errors?.['required']&& (Email.touched || Email.dirty)">
+                Email Id is Required
+            </div>
+            <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">
+                Enter valid Email Id
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password">
+            </div>
+
+            <div class="form-text text-danger" *ngIf="Password.errors?.['required'] &&(Password.touched || Password.dirty)">
+                Password is Required
+            </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="form-text text-danger"  [ngStyle]="{'display':pass}">
+                Either Password or Username is invalid 
+            </div>
+        </div>
+        <div class="row">
+            
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success" [disabled]="login.invalid">Login</button>
+                </div>
+            
+        </div>
+        </form>
+</div>
+
+
+

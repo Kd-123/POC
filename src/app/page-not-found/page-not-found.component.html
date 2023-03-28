@@ -1,0 +1,98 @@
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <body>
+  <input type="file" id="myFileInput">
+<img src="" alt ='preview' id="imagePreview">
+
+
+<script>
+  document.querySelector("#myFileInput").addEventListener("change",function(){
+    const reader = new FileReader();
+
+    console.log(reader.result);
+
+    reader.addEventListener("load", () => {
+      localStorage.setItem('recent-image',reader.result);
+    });
+    reader.readAsDataURL(this.files[0]);
+  });
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    const recent = localStorage.getItem('recent-image');
+
+    if(recent){
+      document.querySelector("#imagePreview").setAttribute('src',recent);
+    }
+  });
+</script>
+</body> -->
+
+
+<body>
+  <div class="container">
+      <h2>Oops! Page not found.</h2>
+      <h4>We can't fint the page you're looking for.</h4>
+      <button type="button" class="main-btn" style="margin-top: 30px;" routerLink="/dashboard/home">GO BACK HOME</button>
+  </div>
+</body>
+
+<div class="dropdown show " >
+  
+  <a data-bs-toggle="dropdown" herf="#" aria-expanded="false" aria-haspopup="true" id="dropdownMenuLink"><img src="" alt="" style="height:30px ; width: 30px; border-radius: 50%;"> &nbsp;<p style="display:inline ; color:black ;"></p>
+    &nbsp; <i class="fas fa-chevron-down" style="height: 5px; color: #aaa;"></i> </a>
+
+
+<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-top: 10px;" >
+  <a class="dropdown-item" routerLink="profile">Profile</a>
+  <a class="dropdown-item" routerLink="change-password">Change Password</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" routerLink="">Logout</a>
+</div>
+
+</div> 
+
+
+<!-- <div class="dropdown show" style="float: right;">
+  <a class=" dropdown-toggle" data-bs-toggle="dropdown" herf="#" aria-expanded="false" aria-haspopup="true" style="margin-right: 10px;"><img src="" alt="" style="height:30px ; width: 30px; border-radius: 50%;"> </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div> -->
+
+
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div> -->
+
+
