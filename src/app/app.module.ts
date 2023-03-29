@@ -7,24 +7,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+//import { HomePageComponent } from './home-page/home-page.component';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UplaodedFilesComponent } from './uplaoded-files/uplaoded-files.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+
 import {EncrDecrServiceService} from './services/encr-decr-service.service';
-import { CharactersComponent } from './characters/characters.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { VehiclesComponent } from './vehicles/vehicles.component';
+
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { UniversitiesComponent } from './universities/universities.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
-import { EditAnnouncementComponent } from './edit-announcement/edit-announcement.component';
-import { NgxConfirmBoxModule,NgxConfirmBoxService } from 'ngx-confirm-box';
+
+import { NgxConfirmBoxModule} from 'ngx-confirm-box';
+import { MatSlideToggleModule } from '@angular/material';
 
 
 
@@ -32,17 +28,9 @@ import { NgxConfirmBoxModule,NgxConfirmBoxService } from 'ngx-confirm-box';
   declarations: [
     AppComponent,
     routingComponents,
-    HomePageComponent,
-    ProfileComponent,
-    PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
-    UplaodedFilesComponent,
-    ChangePasswordComponent,
-    CharactersComponent,
-    VehiclesComponent, 
-    UniversitiesComponent, AnnouncementComponent, EditAnnouncementComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -53,6 +41,7 @@ import { NgxConfirmBoxModule,NgxConfirmBoxService } from 'ngx-confirm-box';
     NgxPaginationModule,
     NgxConfirmBoxModule,
     FormsModule,
+    MatSlideToggleModule,
     
     
     //NgConfirmModule,

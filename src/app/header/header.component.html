@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark shadow-lg" style="background-color: #eee;">
+<nav class="navbar navbar-expand navbar-dark shadow-lg sticky-top" style="background-color:#F5F5F5;">
     <div class="container-fluid">
       <p class="navbar-brand mb-0 h1" style="color: black;">
         File Manager
@@ -17,12 +17,12 @@
           <div class="dropdown show" >
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" herf="#" aria-expanded="false" aria-haspopup="true" id="dropdownMenuLink1" style="color: black;">Settings </a>
   
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1" style="margin-top: 50px;">
-              <a class="dropdown-item" routerLink="profile">Profile</a>
-              <a class="dropdown-item" routerLink="change-password">Change Password</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="">Logout</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1" style="margin-top: 50px;">
+             <li> <a class="dropdown-item" routerLink="profile">Profile</a></li>
+              <li> <a class="dropdown-item" routerLink="change-password">Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="">Logout</a></li>
+            </ul>
           </div>
         </li>
 
@@ -70,7 +70,7 @@
     
   </div> -->
   
-          <img src="{{picUrl}}" alt="" style="height:30px ; width: 30px; border-radius: 50%;"> &nbsp;<p style="display:inline ; color:black;margin-right: 20px;margin-left: 10px;margin-top: 5px;margin-bottom: 5px;">{{name}}</p>
+          <!-- <img src="{{picUrl}}" alt="" style="height:30px ; width: 30px; border-radius: 50%;"> &nbsp;<p style="display:inline ; color:black;margin-right: 20px;margin-left: 10px;margin-top: 5px;margin-bottom: 5px;">{{name}}</p> -->
 
   
     </div>
