@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'RegistrationLoginPage';
 
-  admin = ["kanishka@gmail.com", "kanishka_dutta@persistent.com"];
+  admin = ["kanishka@gmail.com"];
 
 
   constructor() {
